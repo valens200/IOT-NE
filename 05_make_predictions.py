@@ -137,7 +137,7 @@ def main():
     ok_sign_count = 0
 
     # Initialize serial communication
-    ser = serial.Serial('COM12', 9600)  # Replace 'COM12' with your actual serial port
+    ser = serial.Serial('/dev/ttyACM0', 9600)  # Replace 'COM12' with your actual serial port
     
     while True:
         ret, frame = cam.read()
@@ -224,7 +224,7 @@ def main():
 
                 # Send cart details via Serial
                 ser.write(cart_details.encode())
-                print("Data sent successfully via Serial")
+                # print("Data sent successfully via Serial")
         
         if results.multi_hand_landmarks:
             for hand_landmarks in results.multi_hand_landmarks:
@@ -243,6 +243,6 @@ def main():
 
 if __name__ == '__main__':
     # Uncomment the next line when running for the first time to add the column
-    # add_ok_sign_column()
+    add_ok_sign_column()
     create_cart_table()  # Create the cart table if it doesn't exist
     main()
